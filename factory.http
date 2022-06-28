@@ -1,0 +1,30 @@
+### 获取token
+POST http://gateway.factory.dev.efortsh.com/eoth/oauth/token
+Authorization: Basic dGVzdDp0ZXN0
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="grant_type"
+
+password
+--WebAppBoundary
+Content-Disposition: form-data; name="username"
+
+admin
+--WebAppBoundary
+Content-Disposition: form-data; name="password"
+
+admin1234
+--WebAppBoundary--
+
+> {% client.global.set("auth_token",response.body.access_token); %}
+
+###
+POST http://gateway.factory.dev.efortsh.com/fprd/srm/purchase/protocol/qiyuesuo/callBack
+Authorization: Bearer {{auth_token}}
+
+> {%
+ client.test("是否成功",function(){
+     client.assert(response.body.success===true,"查询成功");
+ });
+ %}

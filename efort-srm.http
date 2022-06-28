@@ -1,0 +1,38 @@
+### 获取token
+POST http://gateway.srm.dev.efortsh.com/eoth/oauth/token
+Authorization: Basic dGVzdDp0ZXN0
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="grant_type"
+
+password
+--WebAppBoundary
+Content-Disposition: form-data; name="username"
+
+6666
+--WebAppBoundary
+Content-Disposition: form-data; name="password"
+
+
+--WebAppBoundary--
+
+> {% client.global.set("auth_token",response.body.access_token); %}
+
+### 契约锁内网回调
+POST http://gateway.factory.dev.efortsh.com/fprd/v1/0/srm/purchase/protocol/qiyuesuo/callBack
+
+> {%
+ client.test("是否成功",function(){
+     client.assert(response.body.success===true,"查询成功");
+ });
+ %}
+
+### 契约锁外网回调
+POST http://s5.nsloop.com:35592/fprd/srm/purchase/protocol/qiyuesuo/callBack
+
+> {%
+ client.test("是否成功",function(){
+     client.assert(response.body.success===true,"查询成功");
+ });
+ %}
