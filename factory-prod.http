@@ -1,0 +1,30 @@
+### 获取token         gateway.factory.dev.efortsh.com/eoth/oauth/token
+POST http://gateway.eishare.net/eoth/oauth/token
+Authorization: Basic dGVzdDp0ZXN0
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="grant_type"
+
+password
+--WebAppBoundary
+Content-Disposition: form-data; name="username"
+
+18739460204
+--WebAppBoundary
+Content-Disposition: form-data; name="password"
+
+12345678
+--WebAppBoundary--
+
+> {% client.global.set("auth_token",response.body.access_token); %}
+
+###
+GET http://localhost:9060/v1/0/srm/supplierInfos?supplierId=4b489f78c16df16a39eecae528f01cef
+Authorization: Bearer {{auth_token}}
+
+> {%
+ client.test("是否成功",function(){
+     client.assert(response.body.success===true,"成功");
+ });
+ %}
