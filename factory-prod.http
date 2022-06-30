@@ -10,21 +10,21 @@ password
 --WebAppBoundary
 Content-Disposition: form-data; name="username"
 
-18739460204
+admin
 --WebAppBoundary
 Content-Disposition: form-data; name="password"
 
-12345678
+admin1234
 --WebAppBoundary--
 
 > {% client.global.set("auth_token",response.body.access_token); %}
 
 ###
-GET http://localhost:9060/v1/0/srm/supplierInfos?supplierId=4b489f78c16df16a39eecae528f01cef
+POST http://gateway.eishare.net/eiam/v1/0/organization/user/user
 Authorization: Bearer {{auth_token}}
+E-Menu-Id: 50e0ddcfe8fade2d0956bb9a936f58d5
+Content-Type: application/json
 
-> {%
- client.test("是否成功",function(){
-     client.assert(response.body.success===true,"成功");
- });
- %}
+{"realName":"缪子龙测试","workNo":"2390","cellPhone":"17008305539","departmentId":"","quartersId":"","jobId":"","email":"","userName":"miaozilong","password":"123456","rePassword":"123456"}
+
+###
