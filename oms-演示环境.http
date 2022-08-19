@@ -1,0 +1,33 @@
+### 获取token
+POST http://operationgw.demo.eishare.net/oauth/token
+Authorization: Basic ZmFjdG9yeTpmYWN0b3J5
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="grant_type"
+
+password
+--WebAppBoundary
+Content-Disposition: form-data; name="username"
+
+admin
+--WebAppBoundary
+Content-Disposition: form-data; name="password"
+
+admin1234
+--WebAppBoundary--
+
+> {% client.global.set("auth_token",response.body.access_token); %}
+
+### 刷新权限
+GET http://operationgw.demo.eishare.net/v1/0/authority/permissions/fresh?isCleanPermission=false&isOnlyUpdatePermission=true
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Authorization: bearer {{auth_token}}
+Cache-Control: no-cache
+Connection: keep-alive
+Pragma: no-cache
+Referer: http://gateway.operation.dev.efortsh.local:9190/doc.html
+Request-Origion: Knife4j
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
