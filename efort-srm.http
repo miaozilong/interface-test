@@ -14,13 +14,13 @@ Content-Disposition: form-data; name="username"
 --WebAppBoundary
 Content-Disposition: form-data; name="password"
 
-
+123456
 --WebAppBoundary--
 
 > {% client.global.set("auth_token",response.body.access_token); %}
 
 ### 契约锁内网回调
-POST http://gateway.factory.dev.efortsh.com/fprd/v1/0/srm/purchase/protocol/qiyuesuo/callBack
+POST http://gateway.factory.uat.efortsh.local/fprd/v1/0/srm/purchase/protocol/qiyuesuo/callBack
 
 > {%
  client.test("是否成功",function(){
@@ -29,10 +29,28 @@ POST http://gateway.factory.dev.efortsh.com/fprd/v1/0/srm/purchase/protocol/qiyu
  %}
 
 ### 契约锁外网回调
-POST http://s5.nsloop.com:35592/fprd/srm/purchase/protocol/qiyuesuo/callBack
+POST http://s10.nsloop.com:35592/uat/fprd/srm/purchase/protocol/qiyuesuo/callBack
 
 > {%
  client.test("是否成功",function(){
      client.assert(response.body.success===true,"查询成功");
  });
  %}
+
+
+### test
+http://10.111.185.119:82/uat/fprd/srm/purchase/protocol/qiyuesuo/callBack
+
+### test
+PUT http://localhost:9500/v1/0/efort/srm/purchaser/basicConfiguration/inquiryTemplates
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "id": "b4395898ad8f06b56d8bd80281ef253a",
+  "templateName": "线上4",
+  "lockVersion": 8
+}
+
+###
+GET http://gateway.demo.eishare.net/captcha/code

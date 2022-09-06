@@ -1,0 +1,52 @@
+### 获取token
+POST http://gateway.operation.dev.efortsh.local:9190/oauth/token
+Authorization: Basic ZmFjdG9yeTpmYWN0b3J5
+Content-Type: multipart/form-data; boundary=WebAppBoundary
+
+--WebAppBoundary
+Content-Disposition: form-data; name="grant_type"
+
+password
+--WebAppBoundary
+Content-Disposition: form-data; name="username"
+
+admin
+--WebAppBoundary
+Content-Disposition: form-data; name="password"
+
+admin1234
+--WebAppBoundary--
+
+> {% client.global.set("auth_token",response.body.access_token); %}
+
+### 邀请码申请列表
+GET http://gateway.operation.dev.efortsh.local:9190/v1/0/oms/operation/invitationApplicants/list
+Authorization: Bearer {{auth_token}}
+
+> {%
+ client.test("是否成功",function(){
+     client.assert(response.body.success===true,"查询成功");
+ });
+ %}
+
+### 新增邀请码申请
+POST http://gateway.operation.dev.efortsh.local:9190/v1/0/oms/operation/invitationApplicants
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "applyCount": 1,
+  "applyPurpose": "test",
+  "attachDTOs": [
+    {
+      "id": "",
+      "name": "",
+      "url": ""
+    }
+  ],
+  "auditStatusId": "APPROVED",
+  "statusName": ""
+}
+
+###
+
