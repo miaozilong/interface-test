@@ -28,3 +28,15 @@ Content-Type: application/json
 {"realName":"缪子龙测试","workNo":"2390","cellPhone":"17008305539","departmentId":"","quartersId":"","jobId":"","email":"","userName":"miaozilong","password":"123456","rePassword":"123456"}
 
 ###
+
+### 刷新权限
+GET http://gateway.eishare.net/eadm/v1/authority/fresh/permissions?isCleanPermission=false&isOnlyUpdatePermission=false&serviceName=factory-basic&version=1.3.0-SNAPSHOT
+Accept: */*
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnZW5kZXIiOiIyIiwidXNlcl9uYW1lIjoiQURNSU4iLCJyb2xlSWQiOiI0IiwiZGVwdElkIjpudWxsLCJhdmF0YXIiOm51bGwsImlzQWRtaW4iOjEsInVzZXJOYW1lIjoiYWRtaW4iLCJ1c2VySWQiOiJBRE1JTiIsImNsaWVudF9pZCI6ImZhY3RvcnkiLCJleHRlbmQiOnsiY3VycmVudFJvbGVMZXZlbCI6InRlbmFudCIsInVzZXJIb21lUGFnZSI6bnVsbCwiZGVwYXJ0bWVudElkIjpudWxsLCJwb3N0SWQiOm51bGwsIm93bkFuZFN1Ym9yZGluYXRlc0lkIjpbIkFETUlOIl0sInJvbGVMaXN0IjpbeyJ0ZW5hbnRJZCI6MCwiaWQiOiI0Iiwicm9sZU5hbWUiOiLnp5_miLfmma7pgJrnlKjmiLciLCJyb2xlQ29kZSI6InRlbmFudF9jb21tb24iLCJsZXZlbCI6InRlbmFudCIsImlzQWRtaW4iOjB9XSwiY3VycmVudFJvbGVOYW1lIjoi56ef5oi35pmu6YCa55So5oi3Iiwiam9iSWQiOm51bGwsImN1cnJlbnRSb2xlSWQiOiI0Iiwicm9sZU1lcmdlRmxhZyI6MX0sInJlYWxOYW1lIjoi5byg5LiJIiwic3VjY2VzcyI6dHJ1ZSwic2NvcGUiOlsic2VydmVyIl0sInRlbmFudElkIjowLCJleHAiOjE2NjI0NzE0MzUsImNlbGxQaG9uZSI6IjE1MjIxNDM0MzAxIiwiZW1haWwiOm51bGwsImp0aSI6IjM4ODJjMGZkLWE3NzItNGRkZS04Y2RlLTFiOWFhOTJiYTE2MCIsInVzZXJuYW1lIjoiQURNSU4ifQ.hl_VzewrhtXEBG6S94vOmYDqKVAyngLCDfB7bb2M58k
+Cache-Control: no-cache
+Connection: keep-alive
+Pragma: no-cache
+Request-Origion: Knife4j
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
